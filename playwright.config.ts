@@ -19,11 +19,12 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-       testMatch: /(login|cart)\.spec\.ts/,
+      testMatch: /(login|cart)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'] },
     },
     {
       name: 'firefox',
+      testMatch: /.*\.firefox\.spec\.ts/,
       use: { ...devices['Desktop Firefox'] },
     },
   ],
