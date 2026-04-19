@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,10 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run tests
-        run: npm test
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run login and cart tests
+        run: npx playwright test tests/login.spec.ts tests/cart.spec.ts
