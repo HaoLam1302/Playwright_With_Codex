@@ -1,0 +1,15 @@
+name: Run Spec
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run login and cart tests headed
+        run: npx playwright test --headed tests/login.spec.ts tests/cart.spec.ts
